@@ -24,12 +24,12 @@ El grupo ha establecido un conjunto de tecnologías, patrones y convenciones que
 
 La solución estará compuesta principalmente por un frontend desarrollado con React, un backend desarrollado con Python y FastAPI y una base de datos PostgreSQL. La comunicación entre el frontend y el backend se realizará mediante una API REST utilizando JSON.
 
-## 2. Stack tecnológico
+## 2. Documento Stack (tecnológico)
 
 | Parte | Tecnología | ¿Para qué? |
 |---|---|---|
 | Frontend | React | Crear la interfaz que utilizarán los usuarios administrativos. |
-| Backend | Python + FastAPI | Desarrollar la lógica del sistema y proporcionar la API. |
+| Backend | Python + FastAPI | Desarrollar la lógica del sistema y proporcionar API. |
 | Base de datos | PostgreSQL | Almacenar la información del sistema. |
 | Comunicación | REST API + JSON | Comunicar el frontend con el backend. |
 | Documentación API | OpenAPI | Documentar los servicios disponibles en la API. |
