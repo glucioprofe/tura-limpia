@@ -2,6 +2,43 @@
 
 Prototipo académico para la gestión administrativa de rutas y recorridos de recolección en Buenaventura.
 
+---
+## Requisitos funcionales
+
+### Usuarios y autenticación
+
+| ID | Descripción |
+| --- | --- |
+| RF-01 | Gestionar los roles: Cliente/Ciudadano, Trabajador, Gerente y Administrador. |
+| RF-02 | Permitir que los ciudadanos se registren en la app. |
+| RF-03 | Permitir que el Administrador registre usuarios con rol de Gerente. |
+| RF-04 | Permitir que un Gerente registre usuarios con rol de Trabajador. |
+| RF-05 | Inicio de sesión seguro con credenciales (correo/usuario y contraseña), asignando permisos según el rol. |
+
+### Rutas y seguimiento de camiones
+
+| ID | Descripción |
+| --- | --- |
+| RF-06 | Consultar en tiempo real la ubicación geográfica exacta de un camión recolector específico (Clientes, Trabajadores y Administradores). |
+| RF-07 | Mostrar una tabla ordenada con las rutas asignadas a cada vehículo compactador: sectores/barrios, días de operación y horario estimado de llegada. |
+| RF-08 | Permitir al Administrador y al Gerente crear, modificar o suspender rutas, definir el trazado de los recorridos y actualizar horarios. |
+
+### Cuadrillas de barrido
+
+| ID | Descripción |
+| --- | --- |
+| RF-09 | Permitir al Administrador y al Gerente gestionar trabajadores de barrido: **asignar** a un grupo o sector, **cambiar** de grupo o sector, y **eliminar** (remover o dar de baja en la programación). |
+| RF-10 | Consultar la composición de cada grupo de barrido y la lista de trabajadores por barrio. |
+
+### Flota e incidencias
+
+| ID | Descripción |
+| --- | --- |
+| RF-11 | Registrar y consultar el estado operativo de la flota: disponible, en servicio, en mantenimiento o fuera de servicio. |
+| RF-12 | Permitir a trabajadores, gerentes y administradores registrar novedades o imprevistos en ruta (bloqueos de vías, fallas mecánicas, inundaciones, congestión o calles estrechas). |
+
+---
+
 ## Coordinación
 
 Las responsabilidades y decisiones del Sprint 1 se registran en el [tablero de Trello TuraLimpia](https://trello.com/b/tOeGQFf8/turalimpia). Todas las células trabajan sobre este repositorio común.
