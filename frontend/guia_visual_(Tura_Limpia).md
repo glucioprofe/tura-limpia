@@ -1,27 +1,28 @@
-# Guía Visual Común · Tura Limpia (Landing - Célula 5)
+﻿# Guía Visual Común · Tura Limpia (Landing - Célula 5)
 *Seminario de Actualización - Universidad del Pacífico*
 
 ---
 
 ## 1. Introducción y Objetivo
 
-Esta guía define las reglas visuales básicas para el proyecto. Su propósito es que todas las células de trabajo construyan pantallas con el mismo estilo, garantizando el orden para los usuarios administrativos y la comunidad de Buenaventura.
+Esta guía define las reglas visuales básicas para el proyecto **Tura Limpia**. Su propósito es garantizar una identidad visual coherente, moderna y accesible para los usuarios administrativos y la comunidad de Buenaventura, alineada con los colores institucionales de la **Universidad del Pacífico**.
 
 ---
 
 ## 2. Paleta de Colores
 
-La paleta toma directamente la identidad cromática del logo de **Pazífico Limpio**: el sol del atardecer (amarillo y zapote), las olas del mar (azul océano) y el brote de hojas (verde ecológico).
+La paleta cromática se basa en el escudo oficial de la **Universidad del Pacífico**, representando la selva húmeda tropical y la biodiversidad (verde), el océano Pacífico y la bahía (azul) y el sol naciente del conocimiento (amarillo oro).
 
-### 2.1 Colores de Identidad (Extraídos del Logo)
-* **Zapote Pazífico (Principal - `#FF5500`):** Proviene de la base cálida del sol. Es el color de acción principal para botones primarios, llamados a la acción y elementos destacados.  
-  *(En interacción `Hover`, oscurecer a `#D94500`).*
-* **Amarillo Solar (Acento / Señalización - `#FFD000`):** Proviene de la parte superior del sol. Se usa en detalles de señalización, indicadores y en la alerta de datos de prueba.
-* **Azul Océano (Informativo / Rutas - `#0077D4`):** Proviene de las olas del mar del Pacífico. Se usa en botones secundarios, mapas e información de rutas.
-* **Verde Hoja (Ecológico / Éxito - `#00A850`):** Proviene del brote de hojas del logo. Se usa para indicar rutas activas, confirmaciones y mensajes de éxito.
+### 2.1 Colores Institucionales (Extraídos del Escudo)
+* **Verde Institucional Unipacífico (Principal - `#00843D`):** Color de acción principal para botones primarios, enlaces activos y acento ecológico de recolección de residuos.  
+  *(En interacción `Hover`, oscurecer a `#00632E`).*
+* **Azul Océano Pacífico (Secundario - `#005A9C`):** Color de navegación, barras de encabezado, botones secundarios, mapas e indicadores de rutas marítimas y terrestres.  
+  *(En interacción `Hover`, oscurecer a `#004375`).*
+* **Amarillo Sol / Oro (Acento / Alerta - `#FFC72C`):** Proviene del sol y la estrella del escudo. Se utiliza en detalles de señalización, avisos de servicio y en el badge de alerta de datos de prueba.
+* **Celeste Agua (Apoyo - `#E0F2FE`):** Fondo suave para tarjetas informativas o estados en espera.
 
 ### 2.2 Fondos y Superficies
-* **Fondo general de la pantalla:** Blanco puro (`#FFFFFF`) para una interfaz limpia y luminosa.
+* **Fondo general de la pantalla:** Blanco puro (`#FFFFFF`) para una visual limpia, moderna y luminosa.
 * **Fondo de inputs y campos:** Gris claro (`#F3F4F6`), facilitando al usuario ubicar de inmediato dónde escribir.
 * **Fondo de tarjetas (Cards):** Blanco (`#FFFFFF`) con borde gris sutil.
 * **Texto principal:** Negro carbón (`#111827`) para máximo contraste y legibilidad.
@@ -29,8 +30,8 @@ La paleta toma directamente la identidad cromática del logo de **Pazífico Limp
 * **Bordes y separadores:** Gris suave (`#E5E7EB`).
 
 ### 2.3 Estados y Señalización
-* **Alerta / Prototipo (`#FFD000` - Amarillo Solar):** **Uso obligatorio** para indicar que un dato o un horario aún es de prueba.
-* **Éxito (`#00A850` - Verde Hoja):** Rutas activas y operaciones guardadas con éxito.
+* **Alerta / Prototipo (`#F59E0B` / `#FFC72C` - Amarillo Oro):** **Uso obligatorio** para indicar que un dato o un horario aún es de prueba.
+* **Éxito (`#00843D` - Verde Unipacífico):** Rutas activas y operaciones guardadas con éxito.
 * **Error / Inactivo (`#EF4444` - Rojo):** Rutas no disponibles, campos con error o botones de eliminación.
 
 ---
@@ -70,19 +71,19 @@ Para que los elementos se vean ordenados y alineados, seguimos múltiplos de **8
 ## 5. Componentes Clave
 
 ### 5.1 Botones
-* **Botón Primario:** Fondo Zapote Pazífico (`#FF5500`), texto blanco. Para la acción principal (Buscar, Guardar, Registrar).
-* **Botón Secundario:** Fondo blanco, borde gris (`#E5E7EB`), texto negro carbón (`#111827`). Para acciones complementarias (Cancelar, Limpiar).
+* **Botón Primario:** Fondo Verde Unipacífico (`#00843D`), texto blanco. Para la acción principal (Buscar, Guardar, Registrar).
+* **Botón Secundario:** Fondo blanco, borde Azul Pacífico (`#005A9C`), texto Azul Pacífico (`#005A9C`). Para acciones complementarias (Cancelar, Limpiar).
 * **Botón Peligro:** Fondo rojo (`#EF4444`), texto blanco. Exclusivo para eliminar registros.
 * *Nota:* Todo botón debe cambiar de tono suavemente al pasar el mouse por encima y verse atenuado si está deshabilitado.
 
 ### 5.2 Campos de Formulario
 * Altura estándar de `44px` para que sea fácil hacer clic.
 * Fondo gris claro (`#F3F4F6`), borde gris sutil (`#E5E7EB`) y texto negro carbón (`#111827`).
-* Al hacer clic dentro del campo (`Focus`), el borde se resalta en **Zapote Pazífico** (`#FF5500`) con fondo blanco.
+* Al hacer clic dentro del campo (`Focus`), el borde se resalta en **Verde Unipacífico** (`#00843D`) con fondo blanco.
 * Si hay un error, el borde cambia a rojo y se muestra un mensaje explicativo debajo.
 
 ### 5.3 Etiqueta Obligatoria: "Dato de Prueba"
 Dado que el proyecto se encuentra en fase académica con datos simulados, toda sección o tarjeta que muestre horarios o frecuencias debe incluir esta etiqueta:
 * **Fondo:** Amarillo claro (`#FEFCE8`).
-* **Borde y Texto:** Amarillo / Dorado oscuro (`#A16207`).
+* **Borde y Texto:** Amarillo Oro / Dorado oscuro (`#A16207`).
 * **Contenido:** `⚠️ DATO DE PRUEBA`

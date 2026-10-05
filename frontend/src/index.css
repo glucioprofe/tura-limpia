@@ -1,0 +1,51 @@
+﻿/* ==========================================================================
+   TURA LIMPIA - VARIABLES DE DISENO Y GUIA VISUAL (Celula 5)
+   Colores Institucionales - Universidad del Pacifico
+   ========================================================================== */
+
+:root {
+  /* --- Colores Institucionales (Escudo Universidad del Pacifico) --- */
+  --color-primary: #00843D;         /* Verde Unipacifico - Botones principales y ecologia */
+  --color-primary-hover: #00632E;   /* Verde Oscuro en Hover */
+  --color-secondary: #005A9C;       /* Azul Oceano Pacifico - Navegacion y secundario */
+  --color-secondary-hover: #004375; /* Azul Oscuro en Hover */
+  --color-accent: #FFC72C;          /* Amarillo Oro - Sol y estrella del escudo */
+  --color-accent-hover: #E5B220;    /* Amarillo oscuro en Hover */
+  --color-water: #E0F2FE;           /* Celeste Agua - Tarjetas y fondos suaves */
+
+  /* --- Superficies y Fondos --- */
+  --color-bg-app: #FFFFFF;          /* Fondo general blanco */
+  --color-bg-input: #F3F4F6;        /* Fondo gris claro para inputs y selectores */
+  --color-bg-card: #FFFFFF;         /* Fondo de tarjetas */
+  --color-bg-warning: #FEFCE8;      /* Fondo amarillo tenue de "Dato de Prueba" */
+
+  /* --- Textos y Contraste --- */
+  --color-text-main: #111827;       /* Negro carbon para lectura comoda */
+  --color-text-muted: #4B5563;      /* Gris medio para etiquetas */
+  --color-text-warning: #A16207;    /* Dorado oscuro para alertas */
+  --color-border: #E5E7EB;          /* Bordes y separadores */
+  --color-danger: #EF4444;          /* Rojo para errores o botones destructivos */
+
+  /* --- Tipografia --- */
+  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* --- Espaciado y Radios (8pt Grid) --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;                 /* Inputs y botones */
+  --radius-lg: 12px;                /* Tarjetas y modales */
+  --radius-full: 9999px;            /* Badges tipo pildora */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--color-bg-app);
+  color: var(--color-text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
