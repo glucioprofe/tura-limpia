@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Date
+from sqlalchemy import Column, Integer, String, Date, Enum
 from app.database.base import Base
 
 class Vehiculo(Base):
@@ -14,3 +14,10 @@ class Vehiculo(Base):
     kilometraje = Column(Integer, nullable=False, default=0)
     ultimo_mantenimiento = Column(Date, nullable=True)
     observaciones = Column(String(500), nullable=True)
+    
+    # Aquí está la nueva columna con los 4 estados exactos
+    estado = Column(
+        Enum("Disponible", "En servicio", "En mantenimiento", "Fuera de servicio", name="estado_vehiculo_enum"), 
+        nullable=False, 
+        default="Disponible"
+    )
