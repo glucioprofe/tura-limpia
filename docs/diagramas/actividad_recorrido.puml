@@ -1,0 +1,131 @@
+@startuml
+' =====================================================================
+' Proyecto: Tura Limpia (Seminario de Actualización - Universidad del Pacífico)
+' Artefacto: diagrama de actividad UML · flujo "ejecución de un recorrido"
+' Sprint 1 · Célula 2
+'
+' FUENTE DEL DIAGRAMA:
+'   docs/01 esquema.sql (Célula 3). Ese esquema define barrios, rutas,
+'   horarios, recorridos e incidencias, así que el diagrama cubre el proceso
+'   de recolección. No incluye usuarios, roles ni login, porque el propio
+'   01 esquema.sql los marca como provisionales y de otra célula.
+'
+' RENDER:
+'   java -jar plantuml.jar -tpng -charset UTF-8 docs/diagramas/actividad_recorrido.puml
+' =====================================================================
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Inter
+skinparam defaultFontSize 13
+skinparam shadowing false
+skinparam ArrowColor #4B5563
+skinparam ActivityBorderColor #005A9C
+skinparam ActivityBackgroundColor #FFFFFF
+skinparam ActivityDiamondBorderColor #00843D
+skinparam ActivityDiamondBackgroundColor #E0F2FE
+skinparam PartitionBorderColor #005A9C
+skinparam PartitionTitleBackgroundColor #005A9C
+skinparam PartitionTitleFontColor #FFFFFF
+skinparam NoteBorderColor #A16207
+skinparam NoteBackgroundColor #FEFCE8
+skinparam NoteFontSize 11
+
+title Diagrama de actividad — Ejecución de un recorrido\nTura Limpia · Sprint 1
+
+|#E0F2FE|Administrador / Gerente|
+start
+:Definir o actualizar la ruta\n(código, barrios en orden, días y franjas);
+note right
+  Fuente: docs/01 esquema.sql.
+  Ese esquema define barrios, rutas, horarios,
+  recorridos e incidencias, así que el diagrama
+  cubre el proceso de recolección. No incluye
+  usuarios, roles ni login, porque el propio
+  01 esquema.sql los marca como provisionales
+  y de otra célula.
+end note
+:Activar la ruta para su operación;
+:Programar el recorrido del día\n(fecha + franja de horario);
+note right: El recorrido queda en estado PROGRAMADO.
+
+|#FFF7E6|Conductor / Trabajador|
+:Verificar vehículo y cuadrilla asignados;
+
+if (¿Se puede iniciar el recorrido?) then (No)
+  :Registrar el motivo de la cancelación;
+  note right: Obligatorio: la base de datos\nrechaza CANCELADO sin motivo.
+  :Cambiar el estado a CANCELADO;
+  stop
+else (Sí)
+  :Registrar la hora real de inicio;
+  :Cambiar el estado a EN_CURSO;
+  note right: El vehículo salió y está recolectando.
+
+  repeat
+    :Recolectar en el barrio;
+    ' ---- Bloque de incidencia: encapsulado para no dejar ramas vacías ----
+    if (¿Se detecta un imprevisto?) then (Sí)
+      |#E6F4EA|Supervisor / Encargado|
+      :Registrar la incidencia\n(tipo, gravedad y descripción);
+      note right
+        Tipos: vehículo averiado, vía bloqueada,
+        clima, acumulación de residuos, otro.
+        Puede registrarse sin recorrido asociado;
+        en ese caso se asocia a un barrio.
+      end note
+      :La incidencia nace en estado REPORTADA;
+      |#FFF7E6|Conductor / Trabajador|
+      if (¿La gravedad es ALTA?) then (Sí)
+        :Registrar el motivo de la pausa;
+        :Cambiar el estado a EN_PAUSA;
+        note right: El recorrido se detuvo, pero puede continuar.
+        |#E6F4EA|Supervisor / Encargado|
+        :Tomar el caso;\nLa incidencia pasa a EN_ATENCION;
+        :Gestionar la solución\n(otro vehículo, despejar la vía);
+        :La incidencia pasa a RESUELTA;
+        |#FFF7E6|Conductor / Trabajador|
+        :Reanudar el recorrido\n(el estado vuelve a EN_CURSO);
+      else (No)
+        :Continuar el recorrido sin pausarlo;
+      endif
+      |#E6F4EA|Supervisor / Encargado|
+      :Revisar y cerrar la incidencia;
+      note right
+        La incidencia pasa a CERRADA. Cada cambio de estado
+        se guarda en el historial (estado anterior, estado
+        nuevo, motivo, quién y cuándo).
+        CERRADA y DESCARTADA son estados finales: no se reabren.
+      end note
+      :Marcar el barrio como atendido;
+      |#FFF7E6|Conductor / Trabajador|
+    else (No)
+      :Marcar el barrio como atendido;
+    endif
+  repeat while (¿Quedan barrios por recorrer?) is (Sí)
+  -> no quedan;
+
+  :Registrar la hora real de finalización;
+  note right: El recorrido terminó todos sus barrios.
+
+  ' ---- Regla de negocio del PDF C3: no se completa con problemas abiertos ----
+  if (¿Quedan incidencias en REPORTADA o EN_ATENCION?) then (Sí)
+    :No se puede completar el recorrido;
+    note right
+      El sistema lo impide hasta que la incidencia
+      llegue a CERRADA o DESCARTADA.
+    end note
+    |#E6F4EA|Supervisor / Encargado|
+    :Cerrar o descartar las incidencias pendientes;
+    note right
+      Si fue un error o un duplicado se DESCARTADA,
+      y descartar exige escribir la razón.
+    end note
+    |#FFF7E6|Conductor / Trabajador|
+  else (No)
+  endif
+  :Cambiar el estado a COMPLETADO;
+  note right: COMPLETADO es estado final: no admite cambios posteriores.\nSi algo estuvo mal, se crea un registro nuevo.
+  stop
+endif
+
+@enduml
